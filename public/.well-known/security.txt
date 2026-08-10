@@ -1,0 +1,4 @@
+Contact: mailto:hello@weeboo.com
+Canonical: https://weeboo.com/.well-known/security.txt
+Preferred-Languages: en
+Expires: 2027-08-10T00:00:00.000Z
