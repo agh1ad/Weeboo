@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { hydrateRoot } from "react-dom/client";
+import { createRoot, hydrateRoot } from "react-dom/client";
 import {
   ArrowRight,
   BarChart3,
@@ -101,39 +101,26 @@ export function App() {
       <header>
         <a className="master-logo" href="/" aria-label="Weeboo home">
           <img src={brandMarkUrl} alt="" width="640" height="427" decoding="async" fetchPriority="high" />
+          <span className="brand-name">eeboo</span>
         </a>
         <nav aria-label="Main navigation">
           {[
-            "Home",
-            "About Us",
-            "Services",
-            "Our Work",
-            "Process",
-            "Pricing",
-          ].map((x, i) => (
+            { label: "Home", href: "#top" },
+            { label: "About", href: "/about.html" },
+            { label: "Services", href: "/services.html" },
+            { label: "Our Work", href: "/our-work.html" },
+          ].map(({ label, href }, i) => (
             <a
-              key={x}
+              key={label}
               className={i === 0 ? "active" : ""}
-              href={
-                i === 0
-                  ? "#top"
-                  : i === 1
-                    ? "/about.html"
-                    : i === 2
-                      ? "/services.html"
-                      : i === 3
-                        ? "/our-work.html"
-                        : i === 4
-                          ? "#process"
-                          : "#pricing"
-              }
+              href={href}
             >
-              {x}
+              {label}
             </a>
           ))}
         </nav>
         <div className="header-actions">
-          <a className="client-link" href="/ar/" lang="ar" hrefLang="ar">
+          <a className="language-switch" href="/ar/" lang="ar" hrefLang="ar">
             <span>العربية</span>
           </a>
           <a className="nav-cta" href="/contact.html">
@@ -152,13 +139,12 @@ export function App() {
       </header>
       {menu && (
         <div className="mobile">
-          <a href="/about.html">About Us</a>
+          <a href="#top">Home</a>
+          <a href="/about.html">About</a>
           <a href="/services.html">Services</a>
-          <a href="/our-work.html">Our work</a>
-          <a href="#process">How it works</a>
-          <a href="#pricing">Pricing</a>
+          <a href="/our-work.html">Our Work</a>
           <a href="/ar/" lang="ar">العربية</a>
-          <a href="/contact.html">Let’s build yours</a>
+          <a href="/contact.html">Start a project</a>
         </div>
       )}
       <section className="hero" id="top">
@@ -421,5 +407,7 @@ export function App() {
   );
 }
 if (typeof document !== "undefined") {
-  hydrateRoot(document.getElementById("root"), <App />);
+  const root = document.getElementById("root");
+  if (root.hasChildNodes()) hydrateRoot(root, <App />);
+  else createRoot(root).render(<App />);
 }
