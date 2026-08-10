@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { createRoot } from "react-dom/client";
+import { hydrateRoot } from "react-dom/client";
 import {
   ArrowRight,
   BarChart3,
@@ -26,6 +26,8 @@ import Pricing from "./pricing.jsx";
 import FAQ from "./faq.jsx";
 import FinalCTA from "./final-cta.jsx";
 import Included from "./included.jsx";
+import brandMarkUrl from "../assets/weeboo-brand-mark.webp";
+import logoMasterUrl from "../assets/weeboo-logo-master.webp";
 const Metric = ({ icon, number, label }) => (
   <div className="metric">
     <i>{icon}</i>
@@ -89,7 +91,7 @@ const InternalPaths = () => (
     </div>
   </section>
 );
-function App() {
+export function App() {
   const [menu, setMenu] = useState(false);
   useEffect(() => {
     initMotion();
@@ -98,7 +100,7 @@ function App() {
     <main className="home-v2">
       <header>
         <a className="master-logo" href="/" aria-label="Weeboo home">
-          <img src="/assets/weeboo-brand-mark.webp" alt="" width="640" height="427" decoding="async" fetchPriority="high" />
+          <img src={brandMarkUrl} alt="" width="640" height="427" decoding="async" fetchPriority="high" />
         </a>
         <nav aria-label="Main navigation">
           {[
@@ -338,7 +340,7 @@ function App() {
           <div className="wb-footer-lead">
             <div className="wb-footer-brand">
               <a href="/" aria-label="Weeboo home">
-                <img src="/assets/weeboo-logo-master.webp" alt="Weeboo" width="640" height="427" loading="lazy" decoding="async" />
+                <img src={logoMasterUrl} alt="Weeboo" width="640" height="427" loading="lazy" decoding="async" />
               </a>
               <p>
                 Your idea, handled from first brief to launch—and supported
@@ -414,4 +416,6 @@ function App() {
     </main>
   );
 }
-createRoot(document.getElementById("root")).render(<App />);
+if (typeof document !== "undefined") {
+  hydrateRoot(document.getElementById("root"), <App />);
+}

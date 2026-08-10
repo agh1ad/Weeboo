@@ -3,11 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <meta
       name="description"
       content="Share your idea and Weeboo will plan, write, design, build and support your professional website."
     />
     <meta name="theme-color" content="#1685f8" />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
     <meta
       property="og:title"
       content="Weeboo — One Small Idea. We Build It Online."
@@ -17,7 +22,9 @@
       content="A professional website team for people and businesses who want the whole project handled for them."
     />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://weeboo.com/" />
     <link rel="canonical" href="https://weeboo.com/" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="Weeboo information for AI systems" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -25,6 +32,84 @@
       rel="stylesheet"
     />
     <title>Weeboo — We Build It Online</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://weeboo.com/#organization",
+            "name": "Weeboo",
+            "url": "https://weeboo.com/",
+            "logo": "https://weeboo.com/weeboo-logo.webp",
+            "description": "A professional website team that plans, writes, designs, develops, launches and supports websites for individuals and organizations.",
+            "email": "hello@weeboo.com"
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://weeboo.com/#website",
+            "url": "https://weeboo.com/",
+            "name": "Weeboo",
+            "publisher": { "@id": "https://weeboo.com/#organization" },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "Service",
+            "@id": "https://weeboo.com/#website-service",
+            "name": "Complete website strategy, content, design and development",
+            "url": "https://weeboo.com/services.html",
+            "provider": { "@id": "https://weeboo.com/#organization" },
+            "audience": {
+              "@type": "Audience",
+              "audienceType": "Individuals, businesses and organizations that need a new or improved website"
+            },
+            "description": "A human-led service covering website planning, architecture, copywriting, visual design, development, SEO foundations, launch, managed hosting, maintenance and editor access.",
+            "offers": {
+              "@type": "Offer",
+              "description": "A scope-based project price paid 50% after request approval and 50% after website approval, followed by an agreed monthly platform subscription. Domain costs are separate."
+            }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://weeboo.com/#faq-schema",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What do I need to send to get started?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "A short description of your business or idea, who the website is for and what you want it to achieve is enough. You do not need a finished brief."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do I need to write the content or plan the pages?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Weeboo can recommend the structure, write the page content and define the visual direction using the facts and goals the client shares."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I edit the website after launch?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. The client receives a private admin link for everyday website updates, with support available when needed."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What does the monthly subscription include?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "It covers Weeboo platform hosting, maintenance, editor access and support. Domain registration and renewal are separate."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

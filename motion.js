@@ -425,8 +425,10 @@ const startMotion = () => {
   initMotion();
 };
 
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", startMotion, { once: true });
-} else {
-  startMotion();
+if (typeof document !== "undefined") {
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", startMotion, { once: true });
+  } else {
+    startMotion();
+  }
 }

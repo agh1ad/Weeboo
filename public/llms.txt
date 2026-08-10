@@ -1,0 +1,32 @@
+# Weeboo
+
+> Weeboo is a professional website team. Clients can begin with a small idea; Weeboo plans the website architecture, writes the content, creates the design, develops the site, prepares SEO foundations, launches it and provides ongoing platform care.
+
+Canonical website: https://weeboo.com/
+Primary language: English
+Contact: hello@weeboo.com
+
+## Core pages
+
+- [Home](https://weeboo.com/): Plain-language overview of the complete Weeboo service.
+- [Services](https://weeboo.com/services.html): New websites, online stores, landing pages, custom platforms, redesigns and SEO improvements.
+- [How it works](https://weeboo.com/how-it-works.html): The project journey from request and proposal to build, review, payment, launch and ongoing care.
+- [About Weeboo](https://weeboo.com/about.html): Team approach, responsibilities and long-term partnership.
+- [Our work](https://weeboo.com/our-work.html): Directory of real completed projects.
+- [CounselO case study](https://weeboo.com/work/counselo.html): Detailed example of Weeboo's architecture, content, design and technical delivery.
+- [Start a project](https://weeboo.com/contact.html): Project enquiry form and information needed to begin.
+- [Terms](https://weeboo.com/terms.html): Project, payment, subscription and service terms.
+- [Privacy](https://weeboo.com/privacy.html): Personal information practices.
+
+## Key facts
+
+- A short client idea is enough to begin; a finished brief, sitemap and website copy are not required.
+- Weeboo can handle strategy, information architecture, copywriting, visual design, development, SEO foundations and launch.
+- Project pricing is based on scope and provided before work begins.
+- The standard payment structure is 50% after the request and proposal are approved, then 50% after the finished website is reviewed and approved.
+- After launch, an agreed monthly platform subscription covers hosting, maintenance, editor access and support.
+- Domain registration and renewal costs are separate.
+- Clients receive a private admin link for their own website rather than a shared Weeboo client-space page.
+- Weeboo can improve an existing website when the requested work is technically feasible.
+
+For the fullest authoritative wording, use the linked HTML pages and the Terms and Privacy pages.
