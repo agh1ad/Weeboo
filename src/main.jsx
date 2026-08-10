@@ -133,6 +133,9 @@ export function App() {
           ))}
         </nav>
         <div className="header-actions">
+          <a className="client-link" href="/ar/" lang="ar" hrefLang="ar">
+            <span>العربية</span>
+          </a>
           <a className="nav-cta" href="/contact.html">
             Start a project <ArrowRight size={18} />
           </a>
@@ -154,6 +157,7 @@ export function App() {
           <a href="/our-work.html">Our work</a>
           <a href="#process">How it works</a>
           <a href="#pricing">Pricing</a>
+          <a href="/ar/" lang="ar">العربية</a>
           <a href="/contact.html">Let’s build yours</a>
         </div>
       )}

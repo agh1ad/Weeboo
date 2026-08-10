@@ -4,15 +4,24 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const pages = [
-  ["/", "index.html"],
-  ["/about.html", "about.html"],
-  ["/services.html", "services.html"],
-  ["/how-it-works.html", "how-it-works.html"],
-  ["/contact.html", "contact.html"],
-  ["/our-work.html", "our-work.html"],
-  ["/work/counselo.html", "work/counselo.html"],
-  ["/terms.html", "terms.html"],
-  ["/privacy.html", "privacy.html"],
+  ["/", "index.html", "en", "/ar/"],
+  ["/about.html", "about.html", "en", "/ar/about.html"],
+  ["/services.html", "services.html", "en", "/ar/services.html"],
+  ["/how-it-works.html", "how-it-works.html", "en", "/ar/how-it-works.html"],
+  ["/contact.html", "contact.html", "en", "/ar/contact.html"],
+  ["/our-work.html", "our-work.html", "en", "/ar/our-work.html"],
+  ["/work/counselo.html", "work/counselo.html", "en", "/ar/work/counselo.html"],
+  ["/terms.html", "terms.html", "en", "/ar/terms.html"],
+  ["/privacy.html", "privacy.html", "en", "/ar/privacy.html"],
+  ["/ar/", "ar/index.html", "ar", "/"],
+  ["/ar/about.html", "ar/about.html", "ar", "/about.html"],
+  ["/ar/services.html", "ar/services.html", "ar", "/services.html"],
+  ["/ar/how-it-works.html", "ar/how-it-works.html", "ar", "/how-it-works.html"],
+  ["/ar/contact.html", "ar/contact.html", "ar", "/contact.html"],
+  ["/ar/our-work.html", "ar/our-work.html", "ar", "/our-work.html"],
+  ["/ar/work/counselo.html", "ar/work/counselo.html", "ar", "/work/counselo.html"],
+  ["/ar/terms.html", "ar/terms.html", "ar", "/terms.html"],
+  ["/ar/privacy.html", "ar/privacy.html", "ar", "/privacy.html"],
 ];
 const failures = [];
 
@@ -20,7 +29,7 @@ function assert(condition, message) {
   if (!condition) failures.push(message);
 }
 
-for (const [route, relativePath] of pages) {
+for (const [route, relativePath, language, alternateRoute] of pages) {
   const html = fs.readFileSync(path.join(root, "dist", relativePath), "utf8");
   const text = html
     .replace(/<script[\s\S]*?<\/script>/gi, " ")
@@ -31,11 +40,13 @@ for (const [route, relativePath] of pages) {
     .trim();
   const schemas = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/gi)];
 
-  assert(/<html[^>]+lang="en"/i.test(html), `${route}: missing language declaration`);
+  assert(new RegExp(`<html[^>]+lang="${language}"`, "i").test(html), `${route}: missing language declaration`);
+  if (language === "ar") assert(/<html[^>]+dir="rtl"/i.test(html), `${route}: missing RTL direction`);
   assert(/<title>[^<]{8,}<\/title>/i.test(html), `${route}: missing useful title`);
   assert(/<meta[^>]+name="description"[^>]+content="[^"]{40,}"/i.test(html), `${route}: missing useful meta description`);
   assert(/<meta[^>]+name="robots"[^>]+content="[^"]*index[^"]*follow/i.test(html), `${route}: missing index/follow directive`);
   assert(/<link[^>]+rel="canonical"[^>]+href="https:\/\/weeboo\.com\//i.test(html), `${route}: missing canonical URL`);
+  assert(html.includes(`hreflang="${language === "ar" ? "en" : "ar"}" href="https://weeboo.com${alternateRoute}"`), `${route}: missing reciprocal language alternate`);
   assert((html.match(/<h1(?:\s|>)/gi) || []).length === 1, `${route}: expected exactly one H1`);
   assert(/<main(?:\s|>)/i.test(html), `${route}: missing main landmark`);
   assert(text.length >= 500, `${route}: insufficient raw HTML content (${text.length} characters)`);
@@ -64,6 +75,10 @@ for (const phrase of [
   "Clear answers before",
 ]) {
   assert(homepage.includes(phrase), `Homepage prerender is missing: ${phrase}`);
+}
+const arabicHomepage = fs.readFileSync(path.join(root, "dist", "ar", "index.html"), "utf8");
+for (const phrase of ["فكرة صغيرة", "لا تحتاج إلى معرفة الصفحات", "مهما كانت فكرتك", "عرض واضح قبل أن"]) {
+  assert(arabicHomepage.includes(phrase), `Arabic homepage is missing: ${phrase}`);
 }
 
 const sitemap = fs.readFileSync(path.join(root, "dist", "sitemap.xml"), "utf8");

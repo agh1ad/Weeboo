@@ -2,6 +2,28 @@ const projectForm = document.querySelector("#project-form");
 const formStatus = document.querySelector("#form-status");
 
 if (projectForm && formStatus) {
+  const arabic = document.documentElement.lang === "ar";
+  const copy = arabic
+    ? {
+        sendingButton: "جارٍ الإرسال بأمان… <span>↗</span>",
+        sendingTitle: "جارٍ إرسال طلبك",
+        sendingMessage: "يرجى إبقاء هذه الصفحة مفتوحة للحظات.",
+        successTitle: "تم استلام طلبك.",
+        reference: (reference) => `رقم طلبك هو ${reference}. سنتواصل معك عبر البريد الإلكتروني.`,
+        successMessage: "سنتواصل معك عبر البريد الإلكتروني.",
+        errorTitle: "تعذر إرسال الطلب.",
+        errorMessage: "يرجى المحاولة مجدداً أو مراسلة فريقنا مباشرة.",
+      }
+    : {
+        sendingButton: "Sending securely… <span>↗</span>",
+        sendingTitle: "Sending your request",
+        sendingMessage: "Please keep this page open for a moment.",
+        successTitle: "Your request has been received.",
+        reference: (reference) => `Your reference is ${reference}. We will contact you by email.`,
+        successMessage: "We will contact you by email.",
+        errorTitle: "We could not send the request.",
+        errorMessage: "Please try again or email our team directly.",
+      };
   const submitButton = projectForm.querySelector('button[type="submit"]');
   const startedAt = projectForm.elements.namedItem("form_started_at");
   const statusIcon = document.querySelector("#form-status-icon");
@@ -31,12 +53,12 @@ if (projectForm && formStatus) {
     const data = new FormData(projectForm);
     const payload = Object.fromEntries(data.entries());
     submitButton.disabled = true;
-    submitButton.innerHTML = "Sending securely… <span>↗</span>";
+    submitButton.innerHTML = copy.sendingButton;
     showStatus({
       state: "sending",
       icon: "···",
-      title: "Sending your request",
-      message: "Please keep this page open for a moment.",
+      title: copy.sendingTitle,
+      message: copy.sendingMessage,
     });
 
     try {
@@ -56,17 +78,17 @@ if (projectForm && formStatus) {
       showStatus({
         state: "success",
         icon: "✓",
-        title: "Your request has been received.",
+        title: copy.successTitle,
         message: result.reference
-          ? `Your reference is ${result.reference}. We will contact you by email.`
-          : "We will contact you by email.",
+          ? copy.reference(result.reference)
+          : copy.successMessage,
       });
     } catch (error) {
       showStatus({
         state: "error",
         icon: "!",
-        title: "We could not send the request.",
-        message: error.message || "Please try again or email our team directly.",
+        title: copy.errorTitle,
+        message: arabic ? copy.errorMessage : error.message || copy.errorMessage,
         fallback: true,
       });
     } finally {

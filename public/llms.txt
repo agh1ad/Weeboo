@@ -4,6 +4,7 @@
 
 Canonical website: https://weeboo.com/
 Primary language: English
+Additional language: Arabic
 Contact: hello@weeboo.com
 
 ## Core pages
@@ -17,6 +18,17 @@ Contact: hello@weeboo.com
 - [Start a project](https://weeboo.com/contact.html): Project enquiry form and information needed to begin.
 - [Terms](https://weeboo.com/terms.html): Project, payment, subscription and service terms.
 - [Privacy](https://weeboo.com/privacy.html): Personal information practices.
+
+## Arabic pages
+
+- [الصفحة الرئيسية](https://weeboo.com/ar/): النسخة العربية الكاملة من موقع ويبو.
+- [الخدمات](https://weeboo.com/ar/services.html): خدمات إنشاء وتحسين المواقع باللغة العربية.
+- [كيف نعمل](https://weeboo.com/ar/how-it-works.html): خطوات المشروع والدفعات والإطلاق والرعاية.
+- [من نحن](https://weeboo.com/ar/about.html): نهج فريق ويبو ومسؤولياته.
+- [أعمالنا](https://weeboo.com/ar/our-work.html): معرض المشاريع الحقيقية ودراسات الحالة.
+- [تواصل معنا](https://weeboo.com/ar/contact.html): نموذج طلب مشروع باللغة العربية.
+- [شروط الخدمة](https://weeboo.com/ar/terms.html): الشروط العربية، بما فيها سياسة عدم استرداد الدفعات.
+- [سياسة الخصوصية](https://weeboo.com/ar/privacy.html): ممارسات البيانات والخصوصية باللغة العربية.
 
 ## Key facts
 

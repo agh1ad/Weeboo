@@ -7,6 +7,9 @@
   },
   "scripts": {
     "start": "node server/index.mjs",
+    "generate:arabic": "node scripts/generate-arabic-pages.mjs",
+    "predev": "npm run generate:arabic",
+    "prebuild": "npm run generate:arabic",
     "dev": "vite --host 0.0.0.0",
     "build": "npm run build:client && npm run build:ssr && npm run prerender && npm run validate:discovery",
     "build:client": "vite build",
